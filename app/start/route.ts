@@ -91,12 +91,6 @@ export async function POST(req) {
     }
   }
 
-  const fetchDataTotalStreams = await fetch(`${URL}/totalYoinked`);
-  const fetchDataTotalStreamsJson = await fetchDataTotalStreams.json();
-  const totalStreams = fetchDataTotalStreamsJson.totalScore;
-  const fetchDataCurrentYoinker = await fetch(`${URL}/currentYoinkerApi`);
-  const fetchDataCurrentYoinkerJson = await fetchDataCurrentYoinker.json();
-  const currentYoinker = fetchDataCurrentYoinkerJson.profileHandle;
 
   const balanceOfAccount: any = await publicClient.readContract({
     address: USDCxAddress,
@@ -109,7 +103,7 @@ export async function POST(req) {
 
   return new NextResponse(
     _html(
-      getImgUrl(welcomeString(currentYoinker, totalLeft.toFixed(0))),
+      getImgUrl(welcomeString("tes", totalLeft.toFixed(0))),
       "🎩 Yoink",
       "post",
       `${URL}/check`
